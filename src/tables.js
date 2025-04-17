@@ -4,6 +4,7 @@ var rules = {}
 
 rules.tableCell = {
   filter: ['th', 'td'],
+  pureAttributes: { style: undefined },
   replacement: function (content, node) {
     return cell(content, node)
   }
@@ -37,6 +38,8 @@ rules.table = {
   filter: function (node) {
     return node.nodeName === 'TABLE' && isHeadingRow(node.rows[0])
   },
+
+  pureAttributes: { style: undefined },
 
   replacement: function (content) {
     // Ensure there are no blank lines
